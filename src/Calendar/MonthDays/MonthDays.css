@@ -1,0 +1,19 @@
+.days-of-month {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+
+.day-of-month {
+    width: 14.28%;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    cursor: pointer;
+}
+
+.day-of-month:hover {
+    background-color: #f0f0f0;
+}

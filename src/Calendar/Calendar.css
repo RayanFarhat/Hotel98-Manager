@@ -2,8 +2,8 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 20px;
-    padding: 20px;
+    margin: 2%;
+    padding: 2%;
     border: 1px solid #ccc;
 }
 
@@ -21,24 +21,4 @@
 .day-of-week {
     width: 14.28%;
     text-align: center;
-}
-
-.days-of-month {
-    display: flex;
-    flex-wrap: wrap;
-    width: 100%;
-}
-
-.day-of-month {
-    width: 14.1%;
-    height: 50px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid #ccc;
-    cursor: pointer;
-}
-
-.day-of-month:hover {
-    background-color: #f0f0f0;
 }
