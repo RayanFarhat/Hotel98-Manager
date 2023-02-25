@@ -5,7 +5,8 @@ import { useState } from 'react';
 export const DayContext = React.createContext<DayContextType | null>(null);
 
 // types from database
-type RoomData = {
+export type RoomData = {
+    roomNumber: number
     taken: boolean,
     takers: string,
     fullPrice: number,
