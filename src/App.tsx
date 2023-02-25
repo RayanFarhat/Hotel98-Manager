@@ -1,30 +1,25 @@
 import React from 'react';
-import { useState } from 'react';
 
 import Calendar from './Calendar/Calendar';
+import RoomsList from './RoomsList/RoomsList';
+import MonthContextComponent from './Contexts/MonthContext';
+import DayContextComponent from './Contexts/DayContext';
+
 
 import './App.css';
 
-export const MonthContext = React.createContext<MonthContextType | null>(null);
-
-type MonthContextType = {
-  value: number[],
-  updateValue: (newValue: number[]) => void
-};
 
 function App() {
-  const [value, setValue] = useState<number[]>([]);
-
-  const updateValue = (newValue: number[]) => {
-    setValue(newValue);
-  };
 
   return (
-    <MonthContext.Provider value={{ value, updateValue }}>
-      <div className="App">
-        <Calendar />
-      </div>
-    </MonthContext.Provider>
+    <MonthContextComponent>
+      <DayContextComponent>
+        <div className="App">
+          <Calendar />
+          <RoomsList />
+        </div>
+      </DayContextComponent>
+    </MonthContextComponent>
   );
 }
 

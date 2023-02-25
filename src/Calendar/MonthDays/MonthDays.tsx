@@ -3,7 +3,7 @@ import React from 'react';
 
 
 import './MonthDays.css';
-import { MonthContext } from '../../App';
+import { MonthContext } from '../../Contexts/MonthContext';
 
 function MonthDays() {
     const daysOfMonth = [];

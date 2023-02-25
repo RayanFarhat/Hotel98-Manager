@@ -1,0 +1,8 @@
+.roomsList {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 2%;
+    padding: 2%;
+    border: 1px solid #ccc;
+}
