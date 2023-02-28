@@ -11,7 +11,6 @@ function MonthDays() {
         daysOfMonth.push(i);
     }
     const value = React.useContext(MonthContext);
-    console.log(value);
 
 
     return (

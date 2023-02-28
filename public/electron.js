@@ -11,6 +11,7 @@ function createWindow() {
         // Set the path of an additional "preload" script that can be used to
         // communicate between node-land and browser-land.
         webPreferences: {
+            nodeIntegration: true,
             preload: path.join(__dirname, "preload.js"),
         },
     });
@@ -89,3 +90,4 @@ app.on("web-contents-created", (event, contents) => {
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
+

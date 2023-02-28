@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import Calendar from './Calendar/Calendar';
 import RoomsList from './RoomsList/RoomsList';
@@ -7,9 +7,14 @@ import DayContextComponent from './Contexts/DayContext';
 
 
 import './App.css';
+import { createDB } from './database';
 
 
 function App() {
+
+  useEffect(() => {
+    createDB()
+  }, []);
 
   return (
     <MonthContextComponent>
