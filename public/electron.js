@@ -1,5 +1,5 @@
 // Module to control the application lifecycle and the native browser window.
-const { app, BrowserWindow, protocol } = require("electron");
+const { app, BrowserWindow, protocol, ipcMain } = require("electron");
 const path = require("path");
 const url = require("url");
 
@@ -91,3 +91,18 @@ app.on("web-contents-created", (event, contents) => {
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
 
+
+const DatabaseConstructor = require('better-sqlite3');
+
+
+
+db = new DatabaseConstructor('data.db', { verbose: console.log });
+
+
+
+
+// Main process
+
+ipcMain.on('getSomething', function (event, arg) {
+    event.returnValue = 'something';
+});
