@@ -5,7 +5,6 @@ import RoomsList from './RoomsList/RoomsList';
 import MonthContextComponent from './Contexts/MonthContext';
 import DayContextComponent from './Contexts/DayContext';
 
-import electron from 'electron';
 import './App.css';
 import { createDB } from './database';
 
@@ -13,9 +12,9 @@ import { createDB } from './database';
 function App() {
 
   useEffect(() => {
-    var response = electron.ipcRenderer.sendSync('getSomething');
-    console.log(response); // prints 'something'
-    //createDB()
+    console.log("aaaaa");
+
+    createDB()
   }, []);
 
   return (

@@ -102,7 +102,22 @@ db = new DatabaseConstructor('data.db', { verbose: console.log });
 
 
 // Main process
+ipcMain.handle('create-db', (events, args) => {
+    return 222222222;
+});
 
-ipcMain.on('getSomething', function (event, arg) {
-    event.returnValue = 'something';
+ipcMain.handle('read-db', (events, args) => {
+    return 222222222;
+});
+
+ipcMain.handle('add-db', (events, args) => {
+    return 222222222;
+});
+
+ipcMain.handle('remove-db', (events, args) => {
+    return 222222222;
+});
+
+ipcMain.handle('update-db', (events, args) => {
+    return 222222222;
 });

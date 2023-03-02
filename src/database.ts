@@ -1,27 +1,30 @@
 import { type Database } from 'better-sqlite3';
 
-const DatabaseConstructor = window.require('better-sqlite3')
-
 export let db: Database;
 
-export function createDB() {
-
-    db = new DatabaseConstructor('data.db', { verbose: console.log });
-    console.log(db)
+// typescript can't find db prop in window
+declare global {
+    interface Window {
+        db: any;
+    }
 }
 
-export function readDB() {
-
+export async function createDB() {
+    await window.db.create();
 }
 
-export function addDB() {
-
+export async function readDB() {
+    await window.db.read();
 }
 
-export function removeDB() {
-
+export async function addDB() {
+    await window.db.add();
 }
 
-export function updateDB() {
+export async function removeDB() {
+    await window.db.remove();
+}
 
+export async function updateDB() {
+    await window.db.update();
 }
