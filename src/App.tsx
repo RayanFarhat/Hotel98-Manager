@@ -6,15 +6,15 @@ import MonthContextComponent from './Contexts/MonthContext';
 import DayContextComponent from './Contexts/DayContext';
 
 import './App.css';
-import { createDB } from './database';
+import { createDB, readDB, addDB, removeDB } from './database';
 
 
 function App() {
 
   useEffect(() => {
-    console.log("aaaaa");
-
-    createDB()
+    createDB();
+    //addDB();
+    console.log(readDB());
   }, []);
 
   return (
