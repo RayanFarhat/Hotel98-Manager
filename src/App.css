@@ -1,0 +1,13 @@
+.App {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.title {
+    text-align: center;
+    width: 50%;
+    border: 3px solid rgb(156, 156, 47);
+    padding: 10px;
+}

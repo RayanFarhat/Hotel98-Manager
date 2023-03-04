@@ -3,6 +3,8 @@ import React from 'react';
 import MonthDays from './MonthDays/MonthDays';
 
 import './Calendar.css';
+//Todo:
+// make the calender with react-datePicker and use open prop to make it stay open
 
 function Calendar() {
     const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];

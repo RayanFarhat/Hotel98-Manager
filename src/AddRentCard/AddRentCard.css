@@ -1,0 +1,162 @@
+.addRent {
+    border: 1px solid rgb(0, 0, 0);
+    width: 50%;
+    text-align: center;
+}
+
+.addRentTitle:hover {
+    background-color: rgb(223, 230, 236);
+    cursor: pointer;
+}
+
+.addRentTitle {
+    width: 50%;
+    padding: 4%;
+    margin-left: 25%;
+}
+
+/* for the form */
+.cardForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.2);
+    font-family: Arial, sans-serif;
+}
+
+.labelTitle {
+    font-weight: bold;
+    margin-top: 1rem;
+}
+
+.cardInput {
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+    border: 1px solid #ccc;
+    margin-top: 0.5rem;
+    width: 100%;
+}
+
+.addCardBtn {
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+}
+
+.addCardBtn:hover {
+    background-color: #0069d9;
+}
+
+/* for date picker in the form */
+.date-picker .react-datepicker-wrapper {
+    display: block;
+    width: 50%;
+}
+
+.date-picker .react-datepicker__input-container {
+    width: 50%;
+}
+
+.date-picker .react-datepicker__input-container input {
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 8px;
+    box-sizing: border-box;
+    text-align: center;
+}
+
+.date-picker .react-datepicker__navigation--previous {
+    border-right-color: #ccc;
+}
+
+.date-picker .react-datepicker__navigation--next {
+    border-left-color: #ccc;
+}
+
+.date-picker .react-datepicker__header {
+    background-color: #f0f0f0;
+    border-top-left-radius: 4px;
+    border-top-right-radius: 4px;
+    padding: 8px;
+    text-align: center;
+}
+
+.date-picker .react-datepicker__day {
+    padding: 8px;
+    border-radius: 50%;
+}
+
+.date-picker .react-datepicker__day--selected {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.date-picker .react-datepicker__day--today {
+    font-weight: bold;
+}
+
+.custom-datepicker__input-container input[type="time"] {
+    border: none;
+    padding: 0.5rem;
+    background-color: #f1f1f1;
+    color: #333;
+    font-size: 1rem;
+    width: 8rem;
+}
+
+/* for room picker */
+.number-picker {
+    display: flex;
+    align-items: center;
+}
+
+.number-picker button {
+    padding: 10px;
+    border: none;
+    background-color: #f5f5f5;
+    font-size: 18px;
+    font-weight: bold;
+    color: #333;
+    cursor: pointer;
+}
+
+.number-picker button.active {
+    background-color: #333;
+    color: #fff;
+}
+
+.number-picker button:not(:last-child) {
+    margin-right: 10px;
+}
+
+/* for price picker */
+
+.price-picker {
+    display: flex;
+    align-items: center;
+    font-size: 16px;
+    margin-bottom: 10px;
+}
+
+.price-picker input[type="number"] {
+    width: 100px;
+    height: 30px;
+    border: none;
+    border-radius: 5px;
+    background-color: #f2f2f2;
+    padding: 10px;
+    font-size: 16px;
+    margin-right: 10px;
+}
+
+.price-picker span {
+    font-size: 16px;
+    font-weight: bold;
+}
