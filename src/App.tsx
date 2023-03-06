@@ -8,14 +8,13 @@ import DayContextComponent from './Contexts/DayContext';
 import './App.css';
 import { createDB, readDB, addDB, removeDB } from './database';
 import AddRentCard from './AddRentCard/AddRentCard';
+import PopupMsg from './shared/PopupMsg/PopupMsg';
 
 
 function App() {
 
   useEffect(() => {
     createDB();
-    //addDB();
-    console.log(readDB());
   }, []);
 
   return (

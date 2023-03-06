@@ -3,10 +3,13 @@ import React from 'react';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 
+import { addDB, readDB, type Rent } from '../database';
+
 import './AddRentCard.css';
+import PopupMsg from '../shared/PopupMsg/PopupMsg';
 
 function AddRentCard() {
-    const [clicked, setClicked] = React.useState(true);
+    const [clicked, setClicked] = React.useState(false);
 
     function onCardClick() {
         if (clicked)
@@ -27,11 +30,6 @@ function AddRentCard() {
 
 }
 
-//Todo:
-// make other fields -- Done
-// read the database and check if the room already rented
-// add the data to the database
-
 
 function Form() {
     const [roomNumber, setRoomNumber] = React.useState(1);
@@ -41,15 +39,64 @@ function Form() {
     const [fromDate, setfromDate] = React.useState<Date | null>(new Date());
     const [toDate, settoDate] = React.useState<Date | null>(new Date());
 
-    const handleSubmit = (event: React.FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
-        console.log('Name:', takers);
-        console.log('fromDate:', fromDate);
-        console.log('toDate:', toDate);
+    //for show popup message
+    const [showSuccess, setShowSuccess] = React.useState(false);
+    const [showFail, setShowFail] = React.useState(false);
+
+    const handleSubmit = async (event: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+
+        const rents = await readDB();
+
+        if (fromDate && toDate) {
+
+            // check if toDate time is before fromDate
+            if (new Date(toDate) <= new Date(fromDate)) {
+                console.log("dates is not signed");
+                setShowFail(true);
+                setTimeout(() => setShowFail(false), 1000);
+                return;
+            }
+
+            for (let i = 0; i <= rents.length; i++) {
+                if (rents[i].roomNumber == roomNumber) {
+                    const rowfromDate = new Date(rents[i].fromDate);
+                    const rowtoDate = new Date(rents[i].toDate);
+                    const newfromDate = new Date(fromDate);
+                    const newtoDate = new Date(toDate);
+
+                    // check for intersection
+                    if (dateRangesDoIntersect(rowfromDate, rowtoDate, newfromDate, newtoDate)) {
+                        console.log("room already rented");
+                        setShowFail(true);
+                        setTimeout(() => setShowFail(false), 1000);
+                        return;
+                    }
+                }
+            }
+
+            const newRent: Rent = {
+                id: 123,
+                roomNumber: roomNumber,
+                fromDate: fromDate.toDateString(),
+                toDate: toDate.toDateString(),
+                price: price,
+                takers: takers
+            };
+
+            await addDB(newRent);
+
+            setShowSuccess(true);
+            setTimeout(() => setShowSuccess(false), 1000);
+        }
+        else {
+            console.log("dates is not signed");
+            setShowFail(true);
+            setTimeout(() => setShowFail(false), 1000);
+        }
     }
 
     return (
-        <form className='cardForm' onSubmit={handleSubmit}>
+        <form className='cardForm'>
 
             <label className='labelTitle' htmlFor="roomnumberpicker">Room Number</label>
             <div className="number-picker">
@@ -57,7 +104,7 @@ function Form() {
                     <button
                         key={i + 1}
                         type="button"
-                        className={roomNumber == i + 1 ? 'active' : ''}
+                        className={roomNumber === i + 1 ? 'active' : ''}
                         onClick={() => setRoomNumber(i + 1)}
                     >
                         {i + 1}
@@ -107,12 +154,29 @@ function Form() {
                 calendarClassName="date-picker"
             />
 
+            <button className='addCardBtn' type="submit" onClick={handleSubmit}>Add</button>
+            {showSuccess && <PopupMsg successMsg={true} msg='Done successfully :)' />}
+            {showFail && <PopupMsg successMsg={false} msg='Failed! The Room already rented :(' />}
 
-
-            <button className='addCardBtn' type="submit">Add</button>
         </form>
     );
 }
 
+
+
+function dateRangesDoIntersect(fromDate1: Date, toDate1: Date, fromDate2: Date, toDate2: Date) {
+    // Check if the first date range is completely before the second date range
+    if (toDate1 < fromDate2 || toDate2 < fromDate1) {
+        return false;
+    }
+
+    // Check if the second date range is completely before the first date range
+    if (toDate2 < fromDate1 || toDate1 < fromDate2) {
+        return false;
+    }
+
+    // If neither of the above conditions is true, the date ranges intersect
+    return true;
+}
 
 export default AddRentCard;
