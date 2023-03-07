@@ -6,9 +6,8 @@ import MonthContextComponent from './Contexts/MonthContext';
 import DayContextComponent from './Contexts/DayContext';
 
 import './App.css';
-import { createDB, readDB, addDB, removeDB } from './database';
+import { createDB } from './database';
 import AddRentCard from './AddRentCard/AddRentCard';
-import PopupMsg from './shared/PopupMsg/PopupMsg';
 
 
 function App() {
@@ -21,9 +20,9 @@ function App() {
     <MonthContextComponent>
       <DayContextComponent>
         <div className="App">
-          <h1 className='title'>Hotel 98</h1>
-          <AddRentCard />
+          <h1 className='title'>Hotel 98 Manager</h1>
           <Calendar />
+          <AddRentCard />
           <RoomsList />
         </div>
       </DayContextComponent>

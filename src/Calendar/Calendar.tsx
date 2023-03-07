@@ -1,30 +1,29 @@
 import React from 'react';
 
-import MonthDays from './MonthDays/MonthDays';
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
 import './Calendar.css';
-//Todo:
-// make the calender with react-datePicker and use open prop to make it stay open
+
+//todo
+// check if the month variable is changed,if yes then read the database and get rents and insert them to context
 
 function Calendar() {
-    const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
-
-
+    const [date, setDate] = React.useState<Date | null>(new Date());
+    const handleMonthChange = (date: Date) => {
+        console.log("Month changed to:", date.getMonth());
+    };
     return (
         <div className="calendar">
-            <div className="header">
-                <h1>February 2023</h1>
-            </div>
+            <DatePicker
+                wrapperClassName="date-calendar"
+                calendarClassName="date-calendar"
+                popperPlacement="bottom-start"
 
-            <div className="days-of-week">
-                {daysOfWeek.map((day) => (
-                    <div className="day-of-week" key={day}>
-                        {day}
-                    </div>
-                ))}
-            </div>
-
-            <MonthDays />
+                selected={date}
+                onChange={(date) => setDate(date)}
+                onMonthChange={handleMonthChange}
+                open />
         </div>
     );
 }

@@ -4,22 +4,191 @@
     align-items: center;
     margin: 2%;
     padding: 2%;
-    border: 1px solid #ccc;
     width: 80%;
+    height: 50vw;
 }
 
-.header {
-    margin-bottom: 20px;
+/* Increase the font size of the datepicker input */
+.date-calendar .react-datepicker__input-container input {
+    font-size: 16px;
 }
 
-.days-of-week {
+/* Style the datepicker calendar */
+.date-calendar .react-datepicker {
+    font-family: "Helvetica Neue", sans-serif;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+}
+
+/* Style the header of the datepicker calendar */
+.date-calendar .react-datepicker__header {
+    background-color: #f0f0f0;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    padding-top: 8px;
+    position: relative;
+}
+
+/* Style the navigation arrows on the datepicker calendar */
+.date-calendar .react-datepicker__navigation {
+    top: 8px;
+    border: 0.45rem solid transparent;
+}
+
+.date-calendar .react-datepicker__navigation--previous {
+    border-right-color: #ccc;
+    left: 10px;
+}
+
+.date-calendar .react-datepicker__navigation--next {
+    border-left-color: #ccc;
+    right: 10px;
+}
+
+/* Style the current month and year displayed in the header */
+.date-calendar .react-datepicker__current-month,
+.date-calendar .react-datepicker__current-year {
+    font-weight: bold;
+    margin-top: 8px;
+}
+
+/* Style the weekdays displayed above the calendar */
+.date-calendar .react-datepicker__day-names {
     display: flex;
     justify-content: space-between;
-    width: 100%;
-    margin-bottom: 10px;
+    margin-top: 8px;
+    text-transform: uppercase;
+    font-size: 1vw;
 }
 
-.day-of-week {
-    width: 14.28%;
+/* Style the individual weekdays */
+.date-calendar .react-datepicker__day-name {
+    width: 2rem;
     text-align: center;
+}
+
+/* Style the individual days on the calendar */
+.date-calendar .react-datepicker__day {
+    width: 4vw;
+    height: 4vw;
+    line-height: 2rem;
+    margin: 0.25rem;
+    text-align: center;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+    font-size: 3vw !important;
+    padding: 3vw;
+}
+
+/* Highlight the currently selected day */
+.date-calendar .react-datepicker__day--selected {
+    background-color: #0074d9;
+    color: #fff;
+}
+
+/* Style the days of the week that are part of the current month */
+.date-calendar .react-datepicker__day--in-month {
+    color: #333;
+    cursor: pointer;
+}
+
+/* Style the days of the week that are outside of the current month */
+.date-calendar .react-datepicker__day--outside-month {
+    color: #999;
+    cursor: default;
+}
+
+/* Increase the size of the datepicker calendar */
+.date-calendar .react-datepicker__month {
+    margin: 0 auto;
+    width: 80vw;
+    /* change this to the desired width */
+    max-height: 80vw !important;
+    /* change this to the desired height */
+    overflow-y: auto;
+    height: auto;
+    /* set height to auto */
+}
+
+.date-calendar .react-datepicker__month .date-calendar .react-datepicker__week {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.date-calendar .react-datepicker__week .date-calendar .react-datepicker__day {
+    flex-basis: calc(100% / 7 - 5px);
+    margin: 2px;
+}
+
+.date-calendar .react-datepicker__month .date-calendar .react-datepicker__week:last-of-type {
+    margin-bottom: 8px;
+}
+
+/* Style the dropdown menus for selecting the month and year */
+.date-calendar .react-datepicker__year-dropdown-container,
+.date-calendar .react-datepicker__month-dropdown-container {
+    width: 50%;
+}
+
+/* Style the datepicker input */
+.date-calendar .react-datepicker__input-container input {
+    font-size: 16px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    background-color: #f0f0f0;
+}
+
+/* Style the datepicker dropdown */
+.date-calendar .react-datepicker__triangle {
+    display: none;
+}
+
+.date-calendar .react-datepicker__header {
+    border: none;
+}
+
+.date-calendar .react-datepicker__current-month,
+.date-calendar .react-datepicker__current-year {
+    font-size: 18px;
+}
+
+/* Style the days on the calendar */
+.date-calendar .react-datepicker__day {
+    font-size: 14px;
+    border-radius: 50%;
+    transition: all 0.2s ease;
+}
+
+/* Highlight the currently hovered day */
+.date-calendar .react-datepicker__day:hover {
+    background-color: #f0f0f0;
+}
+
+/* Highlight the currently selected day */
+.date-calendar .react-datepicker__day--selected {
+    background-color: #0074d9;
+    color: #fff;
+}
+
+/* Style the arrow icons on the input */
+.date-calendar .react-datepicker__input-container>*:last-child {
+    margin-left: 8px;
+    cursor: pointer;
+}
+
+/* Style the clear button on the input */
+.date-calendar .react-datepicker__close-icon::after {
+    content: "×";
+    font-size: 18px;
+    color: #999;
+    cursor: pointer;
+}
+
+/* Style the clear button on hover */
+.date-calendar .react-datepicker__close-icon:hover::after {
+    color: #333;
 }
