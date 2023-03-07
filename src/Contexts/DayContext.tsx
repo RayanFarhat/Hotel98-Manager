@@ -9,8 +9,7 @@ export type RoomData = {
     roomNumber: number
     taken: boolean,
     takers: string,
-    fullPrice: number,
-    paidPrice: number
+    price: number,
 };
 export type DayData = {
     day: number

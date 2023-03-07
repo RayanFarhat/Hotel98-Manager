@@ -4,11 +4,13 @@
     align-items: center;
     margin: 2%;
     padding: 2%;
+    padding-left: 20vw;
     width: 80%;
     height: 50vw;
 }
 
 /* Increase the font size of the datepicker input */
+
 .date-calendar .react-datepicker__input-container input {
     font-size: 16px;
 }
@@ -70,15 +72,15 @@
 
 /* Style the individual days on the calendar */
 .date-calendar .react-datepicker__day {
-    width: 4vw;
-    height: 4vw;
+    width: 3vw;
+    height: 3vw;
     line-height: 2rem;
     margin: 0.25rem;
     text-align: center;
     border-radius: 50%;
     transition: all 0.2s ease;
-    font-size: 3vw !important;
-    padding: 3vw;
+    font-size: 2vw !important;
+    padding: 2vw;
 }
 
 /* Highlight the currently selected day */
@@ -102,9 +104,9 @@
 /* Increase the size of the datepicker calendar */
 .date-calendar .react-datepicker__month {
     margin: 0 auto;
-    width: 80vw;
+    width: 60vw;
     /* change this to the desired width */
-    max-height: 80vw !important;
+    max-height: 60vw !important;
     /* change this to the desired height */
     overflow-y: auto;
     height: auto;

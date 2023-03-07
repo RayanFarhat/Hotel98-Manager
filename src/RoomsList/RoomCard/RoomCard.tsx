@@ -24,8 +24,7 @@ function RoomsCard(props: RoomData) {
                     <h3>Room {props.roomNumber}</h3>
                     <h4>The room is taken</h4>
                     <p>{props.takers}</p>
-                    <p>{props.fullPrice}</p>
-                    <p>{props.paidPrice}</p>
+                    <p>{props.price}</p>
                 </>
                 :
                 <>
