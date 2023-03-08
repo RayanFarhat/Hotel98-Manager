@@ -2,11 +2,9 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 2%;
-    padding: 2%;
     padding-left: 20vw;
     width: 80%;
-    height: 50vw;
+    height: 60vw;
 }
 
 /* Increase the font size of the datepicker input */

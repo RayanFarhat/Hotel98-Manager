@@ -6,6 +6,7 @@ export const DayContext = React.createContext<DayContextType | null>(null);
 
 // types from database
 export type RoomData = {
+    id: number,
     roomNumber: number
     takers: string,
     price: number,

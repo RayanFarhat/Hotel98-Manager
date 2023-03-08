@@ -5,7 +5,12 @@ import { type RoomData } from '../../Contexts/DayContext';
 import './RoomCard.css';
 import RoomEdit from './RoomEdit/RoomEdit';
 
-function RoomsCard(props: RoomData) {
+type Props = RoomData & {
+    until?: Date;
+    startin?: Date;
+}
+
+function RoomsCard(props: Props) {
     const cardbackgroundColor = 'rgb(213, 235, 214)';
 
     const [isEditOpen, setIsEditOpen] = useState(false);

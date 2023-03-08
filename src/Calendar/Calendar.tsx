@@ -17,23 +17,22 @@ function Calendar() {
         async function effectFunction() {
             const rents = await readDB();
             if (date) {
-                //todo
-                //DayData = getDayRents(rents, date);
+                DayData?.updateValue(getDayRents(rents, date));
             }
         }
+
         effectFunction();
 
-    }, []);
+    }, [DayData, date]);
 
-    async function onDayPressed(date: Date | null) {
+    function onDayPressed(date: Date | null) {
         setDate(date);
-        const rents = await readDB();
     }
 
     function getDayRents(rents: Rent[], selectedDate: Date) {
         // if date is 7/3 5:53 then make it 8/3 00:00
-        const selectedDateBegin = selectedDate;
-        const selectedDateEnd = selectedDate;
+        const selectedDateBegin = new Date(selectedDate);
+        const selectedDateEnd = new Date(selectedDate);
 
         selectedDateBegin.setHours(0);
         selectedDateBegin.setMinutes(0);
@@ -49,12 +48,13 @@ function Calendar() {
 
         let rooms: RoomData[] = [];
 
-        for (let i = 0; i <= rents.length; i++) {
+        for (let i = 0; i < rents.length; i++) {
 
             // check if room all day rented
             if (new Date(rents[i].fromDate) <= selectedDateBegin &&
                 new Date(rents[i].toDate) >= selectedDateEnd) {
                 rooms.push({
+                    id: rents[i].id,
                     roomNumber: rents[i].roomNumber,
                     takers: rents[i].takers,
                     price: rents[i].price,
@@ -62,8 +62,9 @@ function Calendar() {
             }
             //check if rent is ending this day
             else if (new Date(rents[i].toDate) < selectedDateEnd &&
-                new Date(rents[i].toDate).getDate() == selectedDate.getDate()) {
+                new Date(rents[i].toDate).getDate() === selectedDate.getDate()) {
                 rooms.push({
+                    id: rents[i].id,
                     roomNumber: rents[i].roomNumber,
                     takers: rents[i].takers,
                     price: rents[i].price,
@@ -72,8 +73,9 @@ function Calendar() {
             }
             //check if rent is starting this day
             else if (new Date(rents[i].fromDate) > selectedDateBegin &&
-                new Date(rents[i].fromDate).getDate() == selectedDate.getDate()) {
+                new Date(rents[i].fromDate).getDate() === selectedDate.getDate()) {
                 rooms.push({
+                    id: rents[i].id,
                     roomNumber: rents[i].roomNumber,
                     takers: rents[i].takers,
                     price: rents[i].price,
