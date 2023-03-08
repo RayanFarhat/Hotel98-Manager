@@ -11,13 +11,15 @@ import './Calendar.css';
 function Calendar() {
     const [date, setDate] = React.useState<Date | null>(new Date());
 
-
-
     const DayData = React.useContext(DayContext);
 
     React.useEffect(() => {
         async function effectFunction() {
             const rents = await readDB();
+            if (date) {
+                //todo
+                //DayData = getDayRents(rents, date);
+            }
         }
         effectFunction();
 
@@ -37,7 +39,7 @@ function Calendar() {
         selectedDateBegin.setMinutes(0);
         selectedDateBegin.setSeconds(0);
         selectedDateBegin.setMilliseconds(0);
-        selectedDateEnd.setDate(selectedDate.getDate()); // Add 24 hours to the date
+        selectedDateBegin.setDate(selectedDate.getDate());
 
         selectedDateEnd.setHours(0);
         selectedDateEnd.setMinutes(0);
@@ -45,12 +47,39 @@ function Calendar() {
         selectedDateEnd.setMilliseconds(0);
         selectedDateEnd.setDate(selectedDate.getDate() + 1); // Add 24 hours to the date
 
-        //todo
-        // check time of rents if inside the day or not
-
         let rooms: RoomData[] = [];
 
         for (let i = 0; i <= rents.length; i++) {
+
+            // check if room all day rented
+            if (new Date(rents[i].fromDate) <= selectedDateBegin &&
+                new Date(rents[i].toDate) >= selectedDateEnd) {
+                rooms.push({
+                    roomNumber: rents[i].roomNumber,
+                    takers: rents[i].takers,
+                    price: rents[i].price,
+                });
+            }
+            //check if rent is ending this day
+            else if (new Date(rents[i].toDate) < selectedDateEnd &&
+                new Date(rents[i].toDate).getDate() == selectedDate.getDate()) {
+                rooms.push({
+                    roomNumber: rents[i].roomNumber,
+                    takers: rents[i].takers,
+                    price: rents[i].price,
+                    until: new Date(rents[i].toDate)
+                });
+            }
+            //check if rent is starting this day
+            else if (new Date(rents[i].fromDate) > selectedDateBegin &&
+                new Date(rents[i].fromDate).getDate() == selectedDate.getDate()) {
+                rooms.push({
+                    roomNumber: rents[i].roomNumber,
+                    takers: rents[i].takers,
+                    price: rents[i].price,
+                    startin: new Date(rents[i].fromDate)
+                });
+            }
         }
 
         const data: DayData = {

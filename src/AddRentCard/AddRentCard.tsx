@@ -49,9 +49,9 @@ function Form() {
 
         if (fromDate && toDate) {
 
-            // check if toDate time is before fromDate
-            if (new Date(toDate) <= new Date(fromDate)) {
-                console.log("dates is not signed");
+            // check if toDate time is before fromDate or they are the same
+            if (new Date(toDate) <= new Date(fromDate) || new Date(toDate) == new Date(fromDate)) {
+                console.log("dates is wrong");
                 setShowFail(true);
                 setTimeout(() => setShowFail(false), 1000);
                 return;
@@ -156,7 +156,7 @@ function Form() {
 
             <button className='addCardBtn' type="submit" onClick={handleSubmit}>Add</button>
             {showSuccess && <PopupMsg successMsg={true} msg='Done successfully :)' />}
-            {showFail && <PopupMsg successMsg={false} msg='Failed! The Room already rented :(' />}
+            {showFail && <PopupMsg successMsg={false} msg='Failed! You did somthing wrong :(' />}
 
         </form>
     );

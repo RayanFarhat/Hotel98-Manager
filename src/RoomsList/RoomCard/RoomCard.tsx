@@ -6,7 +6,7 @@ import './RoomCard.css';
 import RoomEdit from './RoomEdit/RoomEdit';
 
 function RoomsCard(props: RoomData) {
-    const cardbackgroundColor = props.taken ? 'rgb(237, 210, 210)' : 'rgb(213, 235, 214)';
+    const cardbackgroundColor = 'rgb(213, 235, 214)';
 
     const [isEditOpen, setIsEditOpen] = useState(false);
     function openEdit() {
@@ -19,19 +19,12 @@ function RoomsCard(props: RoomData) {
 
     return (
         <div className="roomsCard" style={{ backgroundColor: cardbackgroundColor }}>
-            {props.taken ?
-                <>
-                    <h3>Room {props.roomNumber}</h3>
-                    <h4>The room is taken</h4>
-                    <p>{props.takers}</p>
-                    <p>{props.price}</p>
-                </>
-                :
-                <>
-                    <h3>Room {props.roomNumber}</h3>
-                    <h4>The room is empty</h4>
-                </>
-            }
+
+            <h3>Room {props.roomNumber}</h3>
+            <h4>The room is taken</h4>
+            <p>{props.takers}</p>
+            <p>{props.price}</p>
+
 
             <RoomEdit
                 roomNumber={props.roomNumber}

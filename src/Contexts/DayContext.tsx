@@ -7,9 +7,10 @@ export const DayContext = React.createContext<DayContextType | null>(null);
 // types from database
 export type RoomData = {
     roomNumber: number
-    taken: boolean,
     takers: string,
     price: number,
+    until?: Date,//if rent end in this day
+    startin?: Date//if rent start this day
 };
 export type DayData = {
     day: number
