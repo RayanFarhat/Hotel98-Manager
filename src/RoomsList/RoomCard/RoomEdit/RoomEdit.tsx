@@ -3,6 +3,7 @@ import React from 'react';
 
 
 import './RoomEdit.css';
+//todo add upgrade to rent or delete it
 
 type Props = {
     roomNumber: number,

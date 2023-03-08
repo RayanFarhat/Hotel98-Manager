@@ -15,6 +15,10 @@ function Calendar() {
 
     async function onDayPressed(date: Date | null) {
         setDate(date);
+        if (date)
+            console.log(new Date(date?.toString()).getHours());
+
+
         const rents = await readDB();
         if (date) {
             DayData?.updateValue(getDayRents(rents, date));

@@ -77,8 +77,8 @@ function Form() {
             const newRent: Rent = {
                 id: 123,
                 roomNumber: roomNumber,
-                fromDate: fromDate.toDateString(),
-                toDate: toDate.toDateString(),
+                fromDate: fromDate.toString(),
+                toDate: toDate.toString(),
                 price: price,
                 takers: takers
             };
