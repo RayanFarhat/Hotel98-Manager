@@ -13,20 +13,12 @@ function Calendar() {
 
     const DayData = React.useContext(DayContext);
 
-    React.useEffect(() => {
-        async function effectFunction() {
-            const rents = await readDB();
-            if (date) {
-                DayData?.updateValue(getDayRents(rents, date));
-            }
-        }
-
-        effectFunction();
-
-    }, [DayData, date]);
-
-    function onDayPressed(date: Date | null) {
+    async function onDayPressed(date: Date | null) {
         setDate(date);
+        const rents = await readDB();
+        if (date) {
+            DayData?.updateValue(getDayRents(rents, date));
+        }
     }
 
     function getDayRents(rents: Rent[], selectedDate: Date) {
@@ -72,8 +64,9 @@ function Calendar() {
                 });
             }
             //check if rent is starting this day
-            else if (new Date(rents[i].fromDate) > selectedDateBegin &&
+            else if (new Date(rents[i].fromDate) >= selectedDateBegin &&
                 new Date(rents[i].fromDate).getDate() === selectedDate.getDate()) {
+
                 rooms.push({
                     id: rents[i].id,
                     roomNumber: rents[i].roomNumber,

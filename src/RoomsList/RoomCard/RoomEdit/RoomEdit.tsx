@@ -6,6 +6,7 @@ import './RoomEdit.css';
 
 type Props = {
     roomNumber: number,
+    dataID: number,
     isOpen: boolean,
     closeEdit: () => void
 };

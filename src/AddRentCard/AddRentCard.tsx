@@ -57,8 +57,8 @@ function Form() {
                 return;
             }
 
-            for (let i = 0; i <= rents.length; i++) {
-                if (rents[i].roomNumber == roomNumber) {
+            for (let i = 0; i < rents.length; i++) {
+                if (rents[i].roomNumber === roomNumber) {
                     const rowfromDate = new Date(rents[i].fromDate);
                     const rowtoDate = new Date(rents[i].toDate);
                     const newfromDate = new Date(fromDate);

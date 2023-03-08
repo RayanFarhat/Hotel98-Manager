@@ -29,9 +29,12 @@ function RoomsCard(props: Props) {
             <h4>The room is taken</h4>
             <p>{props.takers}</p>
             <p>{props.price}</p>
+            {props.until && <p> until : {props.until.getHours()}:{props.until.getMinutes()}</p>}
+            {props.startin && <p> start in : {props.startin.getHours()}:{props.startin.getMinutes()}</p>}
 
 
             <RoomEdit
+                dataID={props.id}
                 roomNumber={props.roomNumber}
                 isOpen={isEditOpen}
                 closeEdit={closeEdit}
