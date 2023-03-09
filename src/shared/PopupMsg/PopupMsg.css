@@ -1,8 +1,6 @@
 .successMsg {
-    position: absolute;
     padding: 1%;
-    top: 50%;
-    left: 35%;
+
     width: 30%;
     height: 5%;
     background-color: rgb(142, 255, 117);
@@ -11,10 +9,7 @@
 }
 
 .failMsg {
-    position: absolute;
     padding: 1%;
-    top: 50%;
-    left: 35%;
     width: 30%;
     height: 5%;
     background-color: rgb(214, 82, 82);

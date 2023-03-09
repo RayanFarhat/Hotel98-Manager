@@ -54,7 +54,7 @@ function Form() {
             if (new Date(toDate) <= new Date(fromDate) || new Date(toDate) === new Date(fromDate)) {
                 console.log("dates is wrong");
                 setShowFail(true);
-                setTimeout(() => setShowFail(false), 1000);
+                setTimeout(() => setShowFail(false), 3000);
                 return;
             }
 
@@ -69,7 +69,7 @@ function Form() {
                     if (dateRangesDoIntersect(rowfromDate, rowtoDate, newfromDate, newtoDate)) {
                         console.log("room already rented");
                         setShowFail(true);
-                        setTimeout(() => setShowFail(false), 1000);
+                        setTimeout(() => setShowFail(false), 3000);
                         return;
                     }
                 }
@@ -87,12 +87,12 @@ function Form() {
             await addDB(newRent);
 
             setShowSuccess(true);
-            setTimeout(() => setShowSuccess(false), 1000);
+            setTimeout(() => setShowSuccess(false), 3000);
         }
         else {
             console.log("dates is not signed");
             setShowFail(true);
-            setTimeout(() => setShowFail(false), 1000);
+            setTimeout(() => setShowFail(false), 3000);
         }
     }
 
@@ -156,8 +156,8 @@ function Form() {
             />
 
             <button className='addCardBtn' type="submit" onClick={handleSubmit}>הוֹסִיף</button>
-            {showSuccess && <PopupMsg successMsg={true} msg='Done successfully :)' />}
-            {showFail && <PopupMsg successMsg={false} msg='Failed! You did somthing wrong :(' />}
+            {showSuccess && <PopupMsg successMsg={true} msg='הזמנה בוצעה בהצלחה ' />}
+            {showFail && <PopupMsg successMsg={false} msg='נכשל! הזמנה לא נכונה' />}
 
         </form>
     );
