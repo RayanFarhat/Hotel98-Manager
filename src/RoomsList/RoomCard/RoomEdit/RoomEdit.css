@@ -3,8 +3,8 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 300px;
-    height: 200px;
+    width: 80vw;
+    height: 80vh;
     background-color: #fff;
     border: 1px solid #ccc;
     padding: 20px;
@@ -21,4 +21,29 @@
     background-color: #000;
     opacity: 0.5;
     z-index: 999;
+}
+
+.btnsrooms {
+    display: flex;
+    justify-content: space-between;
+}
+
+.Cancel {
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    border: none;
+    color: white;
+    cursor: pointer;
+    background-color: yellowgreen;
+}
+
+.Delete {
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    border: none;
+    color: white;
+    cursor: pointer;
+    background-color: red;
 }

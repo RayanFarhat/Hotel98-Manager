@@ -19,6 +19,8 @@ function RoomsList() {
                     roomNumber={DayDataValue.rooms[i].roomNumber}
                     takers={DayDataValue.rooms[i].takers}
                     price={DayDataValue.rooms[i].price}
+                    fromDate={DayDataValue.rooms[i].fromDate}
+                    toDate={DayDataValue.rooms[i].toDate}
                     until={DayDataValue.rooms[i].until}
                 />);
             }
@@ -29,6 +31,8 @@ function RoomsList() {
                     roomNumber={DayDataValue.rooms[i].roomNumber}
                     takers={DayDataValue.rooms[i].takers}
                     price={DayDataValue.rooms[i].price}
+                    fromDate={DayDataValue.rooms[i].fromDate}
+                    toDate={DayDataValue.rooms[i].toDate}
                     startin={DayDataValue.rooms[i].startin}
                 />);
             }
@@ -39,6 +43,8 @@ function RoomsList() {
                     roomNumber={DayDataValue.rooms[i].roomNumber}
                     takers={DayDataValue.rooms[i].takers}
                     price={DayDataValue.rooms[i].price}
+                    fromDate={DayDataValue.rooms[i].fromDate}
+                    toDate={DayDataValue.rooms[i].toDate}
                 />);
             }
 

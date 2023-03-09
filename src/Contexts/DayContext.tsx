@@ -10,6 +10,8 @@ export type RoomData = {
     roomNumber: number
     takers: string,
     price: number,
+    fromDate: Date,
+    toDate: Date,
     until?: Date,//if rent end in this day
     startin?: Date//if rent start this day
 };

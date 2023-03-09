@@ -5,13 +5,12 @@ import { type RoomData } from '../../Contexts/DayContext';
 import './RoomCard.css';
 import RoomEdit from './RoomEdit/RoomEdit';
 
-type Props = RoomData & {
+export type RoomsCardProps = RoomData & {
     until?: Date;
     startin?: Date;
 }
 
-function RoomsCard(props: Props) {
-    const cardbackgroundColor = 'rgb(213, 235, 214)';
+function RoomsCard(props: RoomsCardProps) {
 
     const [isEditOpen, setIsEditOpen] = useState(false);
     function openEdit() {
@@ -23,23 +22,22 @@ function RoomsCard(props: Props) {
     }
 
     return (
-        <div className="roomsCard" style={{ backgroundColor: cardbackgroundColor }}>
+        <div className="roomsCard" >
 
-            <h3>Room {props.roomNumber}</h3>
-            <h4>The room is taken</h4>
-            <p>{props.takers}</p>
-            <p>{props.price}</p>
-            {props.until && <p> until : {props.until.getHours()}:{props.until.getMinutes()}</p>}
-            {props.startin && <p> start in : {props.startin.getHours()}:{props.startin.getMinutes()}</p>}
+            <h3>חדר {props.roomNumber}</h3>
+            <p>הלקוחים : {props.takers}</p>
+            <p>המחיר :{props.price}</p>
+            {props.until && <p> עד שעה : {props.until.getHours()}:{props.until.getMinutes()}</p>}
+            {props.startin && <p> משעה : {props.startin.getHours()}:{props.startin.getMinutes()}</p>}
 
 
             <RoomEdit
-                dataID={props.id}
+                data={props}
                 roomNumber={props.roomNumber}
                 isOpen={isEditOpen}
                 closeEdit={closeEdit}
             />
-            <button onClick={openEdit}>Edit</button>
+            <button className="updateBtn" onClick={openEdit}>עדכון</button>
 
         </div>
 

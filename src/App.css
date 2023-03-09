@@ -3,11 +3,13 @@
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    background-image: url("../public/background.jpeg")
 }
 
 .title {
     text-align: center;
     width: 50%;
     border: 3px solid rgb(156, 156, 47);
+    color: aliceblue;
     padding: 10px;
 }

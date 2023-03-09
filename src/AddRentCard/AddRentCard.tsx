@@ -5,8 +5,9 @@ import "react-datepicker/dist/react-datepicker.css";
 
 import { addDB, readDB, type Rent } from '../database';
 
-import './AddRentCard.css';
 import PopupMsg from '../shared/PopupMsg/PopupMsg';
+
+import './AddRentCard.css';
 
 function AddRentCard() {
     const [clicked, setClicked] = React.useState(false);
@@ -21,7 +22,7 @@ function AddRentCard() {
     return (
         <div className='addRent'>
 
-            <h4 className='addRentTitle' onClick={onCardClick} >Add new rent</h4>
+            <h4 className='addRentTitle' onClick={onCardClick} >הזמנה חדשה</h4>
 
             {clicked ? <Form /> : ''}
         </div>
@@ -50,7 +51,7 @@ function Form() {
         if (fromDate && toDate) {
 
             // check if toDate time is before fromDate or they are the same
-            if (new Date(toDate) <= new Date(fromDate) || new Date(toDate) == new Date(fromDate)) {
+            if (new Date(toDate) <= new Date(fromDate) || new Date(toDate) === new Date(fromDate)) {
                 console.log("dates is wrong");
                 setShowFail(true);
                 setTimeout(() => setShowFail(false), 1000);
@@ -98,7 +99,7 @@ function Form() {
     return (
         <form className='cardForm'>
 
-            <label className='labelTitle' htmlFor="roomnumberpicker">Room Number</label>
+            <label className='labelTitle' htmlFor="roomnumberpicker">מספר החדר</label>
             <div className="number-picker">
                 {[...Array(8)].map((_, i) => (
                     <button
@@ -113,7 +114,7 @@ function Form() {
                 <input id='roomnumberpicker' type="hidden" name="number" value={roomNumber} onChange={(event) => setRoomNumber(parseInt(event.target.value))} />
             </div>
 
-            <label className='labelTitle' htmlFor="pricenumberpicker">Price</label>
+            <label className='labelTitle' htmlFor="pricenumberpicker">מחיר</label>
             <div className="price-picker">
                 <input
                     id='pricenumberpicker'
@@ -124,13 +125,13 @@ function Form() {
                     value={price}
                     onChange={(event) => setPrice(parseInt(event.target.value))}
                 />
-                <span>Shekel</span>
+                <span>שקל חדש</span>
             </div>
 
-            <label className='labelTitle' htmlFor="takers">The Takers</label>
+            <label className='labelTitle' htmlFor="takers">הלקוחים</label>
             <input className='cardInput' type="text" id="takers" value={takers} onChange={(event) => setTakers(event.target.value)} />
 
-            <label className='labelTitle' htmlFor="fromDate">From Date</label>
+            <label className='labelTitle' htmlFor="fromDate">מתאריך</label>
             <DatePicker
                 id="fromDate"
                 dateFormat="dd/MM/yyyy h:mm aa"
@@ -142,7 +143,7 @@ function Form() {
                 calendarClassName="date-picker"
             />
 
-            <label className='labelTitle' htmlFor="toDate">To Date</label>
+            <label className='labelTitle' htmlFor="toDate">לתאריך</label>
             <DatePicker
                 id="toDate"
                 dateFormat="dd/MM/yyyy h:mm aa"
@@ -154,7 +155,7 @@ function Form() {
                 calendarClassName="date-picker"
             />
 
-            <button className='addCardBtn' type="submit" onClick={handleSubmit}>Add</button>
+            <button className='addCardBtn' type="submit" onClick={handleSubmit}>הוֹסִיף</button>
             {showSuccess && <PopupMsg successMsg={true} msg='Done successfully :)' />}
             {showFail && <PopupMsg successMsg={false} msg='Failed! You did somthing wrong :(' />}
 
@@ -164,7 +165,7 @@ function Form() {
 
 
 
-function dateRangesDoIntersect(fromDate1: Date, toDate1: Date, fromDate2: Date, toDate2: Date) {
+export function dateRangesDoIntersect(fromDate1: Date, toDate1: Date, fromDate2: Date, toDate2: Date) {
     // Check if the first date range is completely before the second date range
     if (toDate1 < fromDate2 || toDate2 < fromDate1) {
         return false;

@@ -15,9 +15,6 @@ function Calendar() {
 
     async function onDayPressed(date: Date | null) {
         setDate(date);
-        if (date)
-            console.log(new Date(date?.toString()).getHours());
-
 
         const rents = await readDB();
         if (date) {
@@ -54,6 +51,8 @@ function Calendar() {
                     roomNumber: rents[i].roomNumber,
                     takers: rents[i].takers,
                     price: rents[i].price,
+                    fromDate: new Date(rents[i].fromDate),
+                    toDate: new Date(rents[i].toDate),
                 });
             }
             //check if rent is ending this day
@@ -63,6 +62,8 @@ function Calendar() {
                     id: rents[i].id,
                     roomNumber: rents[i].roomNumber,
                     takers: rents[i].takers,
+                    fromDate: new Date(rents[i].fromDate),
+                    toDate: new Date(rents[i].toDate),
                     price: rents[i].price,
                     until: new Date(rents[i].toDate)
                 });
@@ -76,6 +77,8 @@ function Calendar() {
                     roomNumber: rents[i].roomNumber,
                     takers: rents[i].takers,
                     price: rents[i].price,
+                    fromDate: new Date(rents[i].fromDate),
+                    toDate: new Date(rents[i].toDate),
                     startin: new Date(rents[i].fromDate)
                 });
             }

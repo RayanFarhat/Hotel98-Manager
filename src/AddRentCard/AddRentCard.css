@@ -1,19 +1,28 @@
 .addRent {
-    border: 1px solid rgb(0, 0, 0);
+    border: 1px solid rgb(255, 255, 255);
     width: 50%;
     text-align: center;
-}
+    background-color: rgb(255, 255, 255);
 
-.addRentTitle:hover {
-    background-color: rgb(223, 230, 236);
-    cursor: pointer;
 }
 
 .addRentTitle {
     width: 50%;
     padding: 4%;
     margin-left: 22%;
+    padding: 0.5rem 1rem;
+    border-radius: 0.25rem;
+    border: none;
+    color: rgb(0, 0, 0);
 }
+
+.addRentTitle:hover {
+    background-color: rgb(161, 222, 135);
+    color: aliceblue;
+    cursor: pointer;
+}
+
+
 
 /* for the form */
 .cardForm {
