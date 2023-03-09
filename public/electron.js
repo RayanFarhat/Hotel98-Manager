@@ -1,5 +1,5 @@
 // Module to control the application lifecycle and the native browser window.
-const { app, BrowserWindow, protocol, ipcMain } = require("electron");
+const { app, Menu, dialog, BrowserWindow, protocol, ipcMain } = require("electron");
 const path = require("path");
 const url = require("url");
 
@@ -49,6 +49,32 @@ function setupLocalFilesNormalizerProxy() {
         // }
     );
 }
+
+// Create the app menu
+const menuTemplate = [
+    {
+        label: 'Help',
+        submenu: [
+            {
+                label: 'About Hotel98',
+                click: () => {
+                    // Show a dialog box with some help text
+                    dialog.showMessageBox({
+                        type: 'info',
+                        message: 'Hotel98 v1.0',
+                        detail: "Hotel98 is a simple hotel manager software app for small hotel businesses.\n©COPYRIGHT: Rayan Farhat",
+                        buttons: ['OK']
+                    });
+                }
+            }
+        ]
+    }
+];
+
+// Create the app menu from the template
+const menu = Menu.buildFromTemplate(menuTemplate);
+// Set the app menu
+Menu.setApplicationMenu(menu);
 
 // This method will be called when Electron has finished its initialization and
 // is ready to create the browser windows.
@@ -130,3 +156,4 @@ ipcMain.handle('update-db', (events, args) => {
 ipcMain.handle('remove-db', (events, args) => {
     db.prepare('DELETE FROM rents WHERE id = ?').run(args);
 });
+
