@@ -69,13 +69,16 @@
       "buildResources": "public"
     },
     "mac": {
-      "target": "dmg"
+      "target": "dmg",
+      "icon": "public/Hotel98Logo.ico"
     },
     "win": {
-      "target": "nsis"
+      "target": "nsis",
+      "icon": "public/Hotel98Logo.ico"
     },
     "linux": {
-      "target": "deb"
+      "target": "deb",
+      "icon": "public/Hotel98Logo.ico"
     }
   },
   "browser": {
