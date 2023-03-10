@@ -8,8 +8,6 @@ import './App.css';
 import { createDB, readDB, removeDB, type Rent } from './database';
 import AddRentCard from './AddRentCard/AddRentCard';
 
-//ToDO: make button that delete old rents
-
 function App() {
 
   useEffect(() => {
