@@ -24,6 +24,7 @@ function RoomEdit(props: Props) {
 
     function onDelete() {
         removeDB(props.data.id);
+        props.closeEdit();
     }
 
     return (

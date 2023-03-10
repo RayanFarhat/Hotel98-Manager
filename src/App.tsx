@@ -5,15 +5,26 @@ import RoomsList from './RoomsList/RoomsList';
 import DayContextComponent from './Contexts/DayContext';
 
 import './App.css';
-import { createDB } from './database';
+import { createDB, readDB, removeDB, type Rent } from './database';
 import AddRentCard from './AddRentCard/AddRentCard';
 
+//ToDO: make button that delete old rents
 
 function App() {
 
   useEffect(() => {
     createDB();
   }, []);
+
+  // for the delete button
+  async function ondeleteOldRents() {
+    const rents = await readDB();
+    for (let i = 0; i < rents.length; i++) {
+      const toDate = new Date(rents[i].toDate);
+      if (toDate < new (Date))
+        removeDB(rents[i].id);
+    }
+  }
 
   return (
     <DayContextComponent>
@@ -22,6 +33,7 @@ function App() {
         <Calendar />
         <AddRentCard />
         <RoomsList />
+        <button className='deleteOldRents' onClick={ondeleteOldRents}>מחיקה הזמנות שפג תוקפן</button>
       </div>
     </DayContextComponent>
   );

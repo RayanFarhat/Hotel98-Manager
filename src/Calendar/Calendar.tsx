@@ -11,6 +11,11 @@ import './Calendar.css';
 function Calendar() {
     const [date, setDate] = React.useState<Date | null>(new Date());
 
+    // show rooms when the app starts of the current day
+    React.useEffect(() => {
+        setTimeout(() => onDayPressed(new Date()), 1000);
+    }, []);
+
     const DayData = React.useContext(DayContext);
 
     async function onDayPressed(date: Date | null) {
