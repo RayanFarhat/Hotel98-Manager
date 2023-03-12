@@ -1,5 +1,5 @@
 # Hotel98-Manager
-Manager software in Hebrew language for small hotels build with ElectronJS that is used by real hotel called Hotel98.
+Manager software in Hebrew language for small hotels build with ElectronJS and SQLite that is used by real hotel called Hotel98.
 It's allow the user to save rents data and manage it and easily view it with calander view system.
 pics:
 ![image](https://user-images.githubusercontent.com/100049997/224498278-59533945-245c-4df9-a47b-b5438c34986c.png)
